@@ -9,6 +9,24 @@
   </head>
   <body>
     HELLO WORLD!
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/feature.js/1.1.0/feature.min.js" async defer></script>
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/feature.js/1.1.0/feature.min.js"></script>
+    <script>
+      if (typeof window.feature !== 'undefined') {
+        window.feature.extend('notification', function() {
+          if (typeof window.Notification !== 'undefined') {
+            return true;
+          }
+        });
+
+        window.feature.extend('beforeunloadevent', function() {
+          if (typeof window.BeforeUnloadEvent !== 'undefined') {
+            return true;
+          }
+        });
+
+        window.feature.testAll();
+      }
+    </script>
   </body>
 </html>
